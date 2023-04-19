@@ -2,18 +2,15 @@
 
 Message::Message()
 {
-
-}
-
-Message::Message(const string& _text, const string& _sender, const string& _receiver)
-    : _text(_text), _sender(_sender), _receiver(_receiver)
-{
-
+    if (!readData())
+    {
+        cout << "There is no data to read from file, you have an empty class!\n";
+    }
 }
 
 Message::~Message()
 {
-    //writeData();
+    writeData();
 }
 
 bool Message::writeData()
@@ -30,7 +27,7 @@ bool Message::writeData()
     return true;
 }
 
-bool Message::getData()
+bool Message::readData()
 {
     ifstream file("message.txt");
 

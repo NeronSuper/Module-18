@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -13,7 +14,6 @@ class User
 public:
 
     User();
-    User(const string& _name, const string& _login, const string& _pass);
     ~User();
 
     friend ostream& operator<<(ostream& os, const User& u)
@@ -31,9 +31,13 @@ public:
         return fs;
     }
 
-
+    void setSpecificData()
+    {
+        _name = "Gregor";
+        _login = "Gregor_pro229";
+        _pass = "12345678";
+    }
 
     bool writeData();
-
-    bool getData();
+    bool readData();
 };

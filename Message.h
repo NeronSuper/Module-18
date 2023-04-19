@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -13,7 +14,6 @@ class Message
 public:
 
     Message();
-    Message(const string& _text, const string& _sender, const string& _receiver);
     ~Message();
 
     friend ostream& operator<<(ostream& os, const Message m)
@@ -31,6 +31,13 @@ public:
         return fs;
     }
 
+    void setSpecificData()
+    {
+        _text = "How are you?";
+        _sender = "Alex";
+        _receiver = "Gregor";
+    }
+
     bool writeData();
-    bool getData();
+    bool readData();
 };

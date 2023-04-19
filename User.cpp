@@ -1,19 +1,18 @@
 #include "User.h"
 
+
+
 User::User()
 {
-
-}
-
-User::User(const string& _name, const string& _login, const string& _pass)
-    : _name(_name), _login(_login), _pass(_pass)
-{
-
+    if (!readData())
+    {
+        cout << "There is no data to read from file, you have an empty class!\n";
+    }
 }
 
 User::~User()
 {
-    //writeData();
+    writeData();
 }
 
 bool User::writeData()
@@ -30,7 +29,7 @@ bool User::writeData()
     return true;
 }
 
-bool User::getData()
+bool User::readData()
 {
     ifstream file("user.txt");
 

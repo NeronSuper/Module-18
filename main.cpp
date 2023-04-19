@@ -12,26 +12,17 @@ namespace fs = std::filesystem;
 
 int main()
 {
-    User user("Vitalii", "123", "12345");
-    Message messae("Hello", "Alex", "Vitalii");
+    // for the first time youll receive a message that there is no data, cause it's really true) but
+    // for the next time, you will have the data, and won't see this message again
+    User user;
+    Message message;
 
-    user.writeData();
-    messae.writeData();
+    user.setSpecificData();
+    message.setSpecificData();
+
+
+    fs::permissions("user.txt", fs::perms::group_write | fs::perms::others_all | fs::perms::owner_exec, fs::perm_options::remove);
+    fs::permissions("message.txt", fs::perms::group_write | fs::perms::others_all | fs::perms::owner_exec, fs::perm_options::remove);
     
-    
-    Message tmpMe;
-    User tmpUs;
-
-    tmpMe.getData();
-    tmpUs.getData();
-
-    cout << tmpMe;
-    cout << tmpUs;
-
-    
-
-    fs::permissions("user.txt", fs::perms::group_write | fs::perms::others_all, fs::perm_options::remove);
-    fs::permissions("message.txt", fs::perms::group_write | fs::perms::others_all, fs::perm_options::remove);
-
     return 0;
 }
